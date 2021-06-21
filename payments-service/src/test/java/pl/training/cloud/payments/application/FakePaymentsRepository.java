@@ -1,4 +1,4 @@
-package pl.training.cloud.payments.adapters.persistence;
+package pl.training.cloud.payments.application;
 
 import org.springframework.stereotype.Repository;
 import pl.training.cloud.payments.domain.Payment;
@@ -9,8 +9,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-@Repository
-public class InMemoryPaymentsRepository implements PaymentsQueries, PaymentsUpdates {
+public class FakePaymentsRepository implements PaymentsQueries, PaymentsUpdates {
 
     private final Set<Payment> payments = new HashSet<>();
 
