@@ -1,0 +1,17 @@
+POST localhost:8080/payments
+Accept: application/json
+Content-Type: application/json
+
+{
+  "value": "PLN 100",
+  "settings": {
+    "cardNumber": "123456789",
+    "cvv": 255
+  }
+}
+
+###
+
+GET localhost:8080/payments/6a596248-5b0a-4965-8e37-3e57e4d8e256
+Accept: application/json
+Content-Type: application/json

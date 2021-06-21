@@ -1,13 +1,13 @@
-package pl.training.cloud.payments;
+package pl.training.cloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PaymentsServiceApplication {
+public class PaymentsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PaymentsServiceApplication.class, args);
+		SpringApplication.run(PaymentsApplication.class, args);
 	}
 
 }
