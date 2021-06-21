@@ -13,10 +13,21 @@ import pl.training.cloud.payments.ports.persistence.PaymentsUpdates;
 import pl.training.cloud.payments.ports.time.TimeService;
 import pl.training.cloud.payments.ports.usecases.GetPaymentUseCase;
 import pl.training.cloud.payments.ports.usecases.ProcessPaymentUseCase;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
 
 @EnableAspectJAutoProxy
 @Configuration
 public class ApplicationConfiguration {
+
+    @Bean
+    public Docket docket() {
+        return new Docket(DocumentationType.OAS_30)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("pl.training.cloud.payments.adapters.rest"))
+                .build();
+    }
 
     @Bean
     public PaymentIdGenerator paymentIdGenerator() {
