@@ -18,6 +18,19 @@ Content-Type: application/json
 
 ###
 
+###
+
+POST localhost:10001/orders
+Accept: application/json
+Content-Type: application/json
+
+{
+  "orderId": 1,
+  "products": [1, 2, 3]
+}
+
+###
+
 GET localhost:8888/payments-service-development.properties
 
 ###
@@ -39,3 +52,16 @@ Content-Type: application/json
 GET localhost:8080/api/payments/7ea2989b-7fee-4d4e-8993-1fd8d52ab97d
 Accept: application/json
 Content-Type: application/json
+
+###
+
+POST localhost:8080/api/shop/orders
+Accept: application/json
+Content-Type: application/json
+
+{
+  "orderId": 1,
+  "products": [1, 2, 3]
+
+
+
