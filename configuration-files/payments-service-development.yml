@@ -1,2 +1,5 @@
 server:
   port: 10000
+payments-broker:
+  paymentsBrokerServiceName: http://localhost:10002
+  paymentsResource: /payments
