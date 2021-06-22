@@ -1,8 +1,11 @@
 package pl.training.cloud.shop;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import pl.training.cloud.shop.application.OrderFeeCalculator;
 import pl.training.cloud.shop.application.PlaceOrderService;
 import pl.training.cloud.shop.ports.payments.PaymentsService;
 import pl.training.cloud.shop.ports.usecases.PlaceOrderUseCase;
@@ -23,8 +26,16 @@ public class ShopConfiguration {
     }
 
     @Bean
-    public PlaceOrderUseCase placeOrderUseCase(PaymentsService paymentsService) {
-        return new PlaceOrderService(paymentsService);
+    public PlaceOrderUseCase placeOrderUseCase(PaymentsService paymentsService, OrderFeeCalculator orderFeeCalculator) {
+        return new PlaceOrderService(paymentsService, orderFeeCalculator);
+    }
+
+    @RefreshScope
+    @Bean
+    public OrderFeeCalculator orderFeeCalculator(@Value("${order-fee}") long orderFee) {
+        var calculator = new OrderFeeCalculator();
+        calculator.setValue(orderFee);
+        return calculator;
     }
 
 }

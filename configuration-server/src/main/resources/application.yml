@@ -7,3 +7,6 @@ spring:
         git:
           uri: https://github.com/landrzejewski/spring-cloud-training
           search-paths: configuration-files
+    bus:
+      trace:
+        enabled: true

@@ -16,10 +16,11 @@ import static java.util.Collections.emptyMap;
 public class PlaceOrderService implements PlaceOrderUseCase {
 
     private final PaymentsService paymentsService;
+    private final OrderFeeCalculator orderFeeCalculator;
 
     @Override
     public void place(Order order) {
-        var paymentValue = order.getTotalValue();
+        var paymentValue = order.getTotalValue().add(orderFeeCalculator.getValue());
         log.info("Payment value: " + paymentValue);
         var payment = paymentsService.pay(paymentValue, Map.of("cardNumber", "123456789"))
                 .orElseThrow(PaymentFailedException::new);
