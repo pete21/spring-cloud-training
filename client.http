@@ -18,4 +18,4 @@ Content-Type: application/json
 
 ###
 
-GET localhost:8888/application-default.yml
+GET localhost:8888/payments-service-development.properties
