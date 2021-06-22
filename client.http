@@ -62,6 +62,17 @@ Content-Type: application/json
 {
   "orderId": 1,
   "products": [1, 2, 3]
+}
 
+###
 
+POST localhost:10002/payments
+Accept: application/json
+Content-Type: application/json
+
+{
+  "requestId": "1",
+  "value": "100 PLN",
+  "properties": {}
+}
 

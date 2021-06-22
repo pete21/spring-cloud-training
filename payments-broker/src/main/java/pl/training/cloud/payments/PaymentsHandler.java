@@ -17,7 +17,8 @@ public class PaymentsHandler {
     public Mono<ServerResponse> getPayments(ServerRequest serverRequest) {
         var payments = paymentsService.getPayments().map(mapper::toDto);
         return ServerResponse.ok()
-                .contentType(MediaType.APPLICATION_STREAM_JSON)
+                .contentType(MediaType.APPLICATION_NDJSON)
+                //.contentType(MediaType.APPLICATION_STREAM_JSON)
                 .body(payments, PaymentDto.class);
     }
 
