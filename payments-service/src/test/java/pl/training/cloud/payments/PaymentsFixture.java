@@ -2,7 +2,7 @@ package pl.training.cloud.payments;
 
 import org.javamoney.moneta.FastMoney;
 import pl.training.cloud.commons.money.LocalMoney;
-import pl.training.cloud.payments.adapters.persistence.jpa.PaymentEntity;
+import pl.training.cloud.payments.adapters.persistence.PaymentEntity;
 import pl.training.cloud.payments.adapters.rest.PaymentDto;
 import pl.training.cloud.payments.adapters.rest.PaymentStatusDto;
 import pl.training.cloud.payments.domain.Payment;

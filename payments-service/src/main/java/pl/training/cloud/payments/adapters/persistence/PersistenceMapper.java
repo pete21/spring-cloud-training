@@ -1,10 +1,10 @@
-package pl.training.cloud.payments.adapters.persistence.jpa;
+package pl.training.cloud.payments.adapters.persistence;
 
 import org.mapstruct.Mapper;
 import pl.training.cloud.payments.domain.Payment;
 
 @Mapper(componentModel = "spring")
-public interface JpaPaymentsModelMapper {
+public interface PersistenceMapper {
 
     PaymentEntity toEntity(Payment payment);
 

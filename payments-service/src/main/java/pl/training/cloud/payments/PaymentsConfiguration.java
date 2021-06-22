@@ -1,8 +1,10 @@
-package pl.training.cloud;
+package pl.training.cloud.payments;
 
+import org.mapstruct.factory.Mappers;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import pl.training.cloud.commons.money.FastMoneyMapper;
 import pl.training.cloud.payments.application.GetPaymentService;
 import pl.training.cloud.payments.application.PaymentIdGenerator;
 import pl.training.cloud.payments.application.ProcessPaymentService;
@@ -19,7 +21,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 @EnableAspectJAutoProxy
 @Configuration
-public class ApplicationConfiguration {
+public class PaymentsConfiguration {
 
     @Bean
     public Docket docket() {
@@ -27,6 +29,11 @@ public class ApplicationConfiguration {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("pl.training.cloud.payments.adapters.rest"))
                 .build();
+    }
+
+    @Bean
+    public FastMoneyMapper fastMoneyMapper() {
+        return Mappers.getMapper(FastMoneyMapper.class);
     }
 
     @Bean

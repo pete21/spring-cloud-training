@@ -3,7 +3,7 @@ package pl.training.cloud.commons.money;
 import org.javamoney.moneta.FastMoney;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface FastMoneyMapper {
 
     default FastMoney toFastMoney(String value) {

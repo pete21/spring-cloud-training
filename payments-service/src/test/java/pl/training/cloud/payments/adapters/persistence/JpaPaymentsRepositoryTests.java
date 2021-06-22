@@ -1,6 +1,5 @@
-package pl.training.cloud.payments.adapters.persistence.jpa;
+package pl.training.cloud.payments.adapters.persistence;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,14 +14,14 @@ import static pl.training.cloud.payments.PaymentsFixture.PAYMENT_STATUS;
 
 @DataJpaTest
 @ExtendWith(SpringExtension.class)
-class SpringDataPaymentsRepositoryTests {
+class JpaPaymentsRepositoryTests {
 
     private final PaymentEntity paymentEntity = PaymentsFixture.paymentEntity();
 
     @Autowired
     private TestEntityManager entityManager;
     @Autowired
-    private SpringDataPaymentsRepository sut;
+    private JpaPaymentsRepository sut;
 
     @BeforeEach
     void beforeEach() {

@@ -9,7 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import pl.training.cloud.Application;
 
 import javax.persistence.EntityManager;
 
@@ -20,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static pl.training.cloud.payments.PaymentsFixture.*;
 
 @SpringBootTest(
-        classes = Application.class,
+        classes = PaymentsApplication.class,
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @AutoConfigureMockMvc

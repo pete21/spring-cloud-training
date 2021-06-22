@@ -30,12 +30,12 @@ class GetPaymentControllerTests {
     @MockBean
     private GetPaymentUseCase getPaymentUseCase;
     @MockBean
-    private RestPaymentsModelMapper modelMapper;
+    private RestMapper mapper;
 
     @BeforeEach
     void beforeEach() {
         when(getPaymentUseCase.findById(PAYMENT_ID)).thenReturn(VALID_PAYMENT);
-        when(modelMapper.toDto(any(Payment.class))).thenReturn(paymentDto());
+        when(mapper.toDto(any(Payment.class))).thenReturn(paymentDto());
     }
 
     @Test

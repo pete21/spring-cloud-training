@@ -2,22 +2,20 @@ package pl.training.cloud.payments.adapters.rest;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import pl.training.cloud.payments.ports.usecases.GetPaymentUseCase;
 
 @RestController
 @RequiredArgsConstructor
-public class GetPaymentController {
+public class GetPaymentController implements GetPaymentApi {
 
     private final GetPaymentUseCase getPaymentUseCase;
-    private final RestPaymentsModelMapper modelMapper;
+    private final RestMapper mapper;
 
-    @GetMapping("payments/{id}")
-    public ResponseEntity<PaymentDto> findById(@PathVariable String id) {
+    @Override
+    public ResponseEntity<PaymentDto> findById(String id) {
         var payment = getPaymentUseCase.findById(id);
-        var paymentDto = modelMapper.toDto(payment);
+        var paymentDto = mapper.toDto(payment);
         return ResponseEntity.ok(paymentDto);
     }
 

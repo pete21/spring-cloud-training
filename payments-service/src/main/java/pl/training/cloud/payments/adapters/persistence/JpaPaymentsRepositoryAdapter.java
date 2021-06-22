@@ -1,4 +1,4 @@
-package pl.training.cloud.payments.adapters.persistence.jpa;
+package pl.training.cloud.payments.adapters.persistence;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
@@ -12,22 +12,22 @@ import java.util.Optional;
 @Primary
 @Repository
 @RequiredArgsConstructor
-public class JpaPaymentsRepository implements PaymentsQueries, PaymentsUpdates {
+public class JpaPaymentsRepositoryAdapter implements PaymentsQueries, PaymentsUpdates {
 
-    private final SpringDataPaymentsRepository paymentsRepository;
-    private final JpaPaymentsModelMapper modelMapper;
+    private final JpaPaymentsRepository paymentsRepository;
+    private final PersistenceMapper mapper;
 
     @Override
     public Optional<Payment> findById(String id) {
         return paymentsRepository.findById(id)
-                .map(modelMapper::toDomain);
+                .map(mapper::toDomain);
     }
 
     @Override
     public Payment save(Payment payment) {
-        var entity = modelMapper.toEntity(payment);
+        var entity = mapper.toEntity(payment);
         var result = paymentsRepository.save(entity);
-        return modelMapper.toDomain(result);
+        return mapper.toDomain(result);
     }
 
 }

@@ -1,7 +1,8 @@
-package pl.training.cloud.payments.adapters.persistence.jpa;
+package pl.training.cloud.payments.adapters.persistence;
 
 import lombok.Data;
 import org.javamoney.moneta.FastMoney;
+import pl.training.cloud.commons.money.FastMoneyConverter;
 
 import javax.persistence.*;
 import java.time.Instant;
@@ -15,6 +16,7 @@ public class PaymentEntity {
 
     @Id
     private String id;
+    @Convert(converter = FastMoneyConverter.class)
     private FastMoney value;
     @ElementCollection
     @CollectionTable(name = "PAYMENTS_PROPERTIES", joinColumns = @JoinColumn(name = "payment_id"))

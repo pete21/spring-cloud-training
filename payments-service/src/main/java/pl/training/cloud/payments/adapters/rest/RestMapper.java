@@ -10,7 +10,7 @@ import pl.training.cloud.payments.domain.Payment;
 import pl.training.cloud.payments.domain.PaymentStatus;
 
 @Mapper(componentModel = "spring", uses = FastMoneyMapper.class)
-public interface RestPaymentsModelMapper {
+public interface RestMapper {
 
     @Mapping(source = "settings", target = "properties")
     PaymentRequest toDomain(PaymentRequestDto paymentRequestDto);

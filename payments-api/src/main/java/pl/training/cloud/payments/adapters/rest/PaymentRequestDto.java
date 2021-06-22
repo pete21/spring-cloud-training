@@ -12,8 +12,8 @@ public class PaymentRequestDto {
 
     @Money
     @NotNull
-    private final String value;
+    private String value;
     @NotEmpty
-    private final Map<String, String> settings;
+    private Map<String, String> settings;
 
 }

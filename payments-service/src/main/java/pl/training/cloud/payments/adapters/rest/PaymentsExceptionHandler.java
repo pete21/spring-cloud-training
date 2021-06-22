@@ -30,6 +30,7 @@ public class PaymentsExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionDto> onException(Exception exception, Locale locale) {
         log.warning("Exception: " + exception.getMessage());
+        exception.printStackTrace();
         return createResponse(exception, INTERNAL_SERVER_ERROR, locale);
     }
 
