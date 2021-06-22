@@ -1,6 +1,11 @@
 spring:
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-  messages:
-    basename: errors
+  application:
+    name: payments-service
+  config:
+    import: optional:configserver:http://localhost:8888
+  cloud:
+    config:
+      label: master # default
+      # uri: http://localhost:8888 old way
+  profiles:
+    active: development
