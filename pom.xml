@@ -21,6 +21,7 @@
         <module>payments-api</module>
         <module>payments-service</module>
         <module>configuration-server</module>
+        <module>discovery-server</module>
         <module>commons</module>
     </modules>
 
