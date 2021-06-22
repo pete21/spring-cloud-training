@@ -5,6 +5,7 @@ import lombok.extern.java.Log;
 import org.javamoney.moneta.FastMoney;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
+import pl.training.cloud.payments.adapters.rest.PaymentDto;
 import pl.training.cloud.payments.adapters.rest.PaymentRequestDto;
 import pl.training.cloud.payments.adapters.rest.ProcessPaymentApi;
 import pl.training.cloud.shop.domain.Payment;
@@ -12,6 +13,7 @@ import pl.training.cloud.shop.ports.payments.PaymentsService;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 @Service
 @Log
