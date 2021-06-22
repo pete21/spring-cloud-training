@@ -74,3 +74,11 @@ Content-Type: application/json
   "properties": {}
 }
 
+###
+
+POST http://localhost:8888/monitor
+Content-Type: application/x-www-form-urlencoded
+
+path=shop-service
+
+
