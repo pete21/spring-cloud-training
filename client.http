@@ -19,3 +19,23 @@ Content-Type: application/json
 ###
 
 GET localhost:8888/payments-service-development.properties
+
+###
+
+POST localhost:8080/api/payments
+Accept: application/json
+Content-Type: application/json
+
+{
+  "value": "100 PLN",
+  "settings": {
+    "cardNumber": "123456789",
+    "cvv": 255
+  }
+}
+
+###
+
+GET localhost:8080/api/payments/7ea2989b-7fee-4d4e-8993-1fd8d52ab97d
+Accept: application/json
+Content-Type: application/json
