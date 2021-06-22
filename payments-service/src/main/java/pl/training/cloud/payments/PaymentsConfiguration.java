@@ -1,9 +1,11 @@
 package pl.training.cloud.payments;
 
 import org.mapstruct.factory.Mappers;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.web.client.RestTemplate;
 import pl.training.cloud.commons.money.FastMoneyMapper;
 import pl.training.cloud.payments.application.GetPaymentService;
 import pl.training.cloud.payments.application.PaymentIdGenerator;
@@ -49,6 +51,12 @@ public class PaymentsConfiguration {
     @Bean
     public GetPaymentUseCase getPaymentUseCase(PaymentsQueries paymentsQueries) {
         return new GetPaymentService(paymentsQueries);
+    }
+
+    @LoadBalanced
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
 }

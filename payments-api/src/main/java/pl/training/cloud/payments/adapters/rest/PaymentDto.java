@@ -8,6 +8,7 @@ import java.time.Instant;
 public class PaymentDto {
 
     private String id;
+    private String requestId;
     private String value;
     private Instant timestamp;
     private PaymentStatusDto status;

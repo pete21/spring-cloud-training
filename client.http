@@ -18,8 +18,6 @@ Content-Type: application/json
 
 ###
 
-###
-
 POST localhost:10001/orders
 Accept: application/json
 Content-Type: application/json

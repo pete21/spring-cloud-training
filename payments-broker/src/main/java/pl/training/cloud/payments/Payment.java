@@ -8,7 +8,6 @@ import org.javamoney.moneta.FastMoney;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.Instant;
 import java.util.Map;
 
 @Document
@@ -23,7 +22,6 @@ public class Payment {
     private String requestId;
     private FastMoney value;
     private Map<String, String> properties;
-    private Instant timestamp;
     private String status;
 
 }

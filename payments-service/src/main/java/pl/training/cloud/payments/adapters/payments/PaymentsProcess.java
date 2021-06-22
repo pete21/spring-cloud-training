@@ -9,8 +9,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import pl.training.cloud.payments.adapters.rest.PaymentDto;
 import pl.training.cloud.payments.domain.Payment;
 
+import javax.annotation.PostConstruct;
 import java.net.URI;
 
 @ConfigurationProperties("payments-broker")
@@ -20,14 +23,31 @@ import java.net.URI;
 public class PaymentsProcess {
 
     private final DiscoveryClient discoveryClient;
+    private final StreamMapper mapper;
     @Setter
     private String paymentsBrokerServiceName;
     @Setter
     private String paymentsResource;
 
+    @PostConstruct
+    public void init() {
+        WebClient.builder().build()
+                .get()
+                .uri(getUri())
+                .retrieve()
+                .bodyToFlux(PaymentDto.class)
+                .subscribe(payment -> log.info("Update: " + payment.toString()), exception -> log.info(exception.toString()), () -> log.info("Completed"));
+    }
+
     @EventListener
     public void process(Payment payment) {
-        log.info(getUri().toString());
+        WebClient.builder().build()
+                .post()
+                .uri(getUri())
+                .bodyValue(mapper.toDto(payment))
+                .retrieve()
+                .bodyToMono(PaymentDto.class)
+                .subscribe(result -> log.info("On finish payment: " + result.toString()), exception -> log.info(exception.toString()), () -> log.info("Completed"));
     }
 
     private URI getUri() {
