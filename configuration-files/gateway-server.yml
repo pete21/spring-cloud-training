@@ -3,7 +3,7 @@ spring:
     gateway:
       routes:
         - id: payments
-          predicaates:
+          predicates:
             - Path=/api/payments/**
           uri: lb://PAYMENTS-SERVICE
           filters:
