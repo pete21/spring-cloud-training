@@ -45,7 +45,9 @@ public class ShopConfiguration {
 
     @Bean
     public Consumer<PaymentDto> paymentsChannel() {
-        return paymentDto -> log.info("Payment confirmation: " + paymentDto);
+        return paymentDto -> {
+            log.info("Payment confirmation: " + paymentDto);
+        };
     }
 
 }

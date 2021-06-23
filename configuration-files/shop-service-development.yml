@@ -3,13 +3,11 @@ server:
 spring:
   cloud:
     stream:
-#      function:
-#        bindings:
-#          paymentsChannel-in-0: paymentsChannel
+      function:
+        bindings:
+          paymentsChannel-in-0: paymentsChannel
       bindings:
-        paymentsChannel-in-0:
+        paymentsChannel:
           destination: Payments
           content-type: application/json
-          group: payments-updates
-          consumer:
-            concurrency: 10
+          group: payments
