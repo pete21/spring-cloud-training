@@ -8,3 +8,5 @@ spring:
       label: 006-Security
   profiles:
     active: development
+encrypt:
+  key: SYMMETRICKEY

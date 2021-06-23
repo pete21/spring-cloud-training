@@ -7,6 +7,8 @@ spring:
         git:
           uri: https://github.com/landrzejewski/spring-cloud-training
           search-paths: configuration-files
+        encrypt:
+          enabled: false
     bus:
       trace:
         enabled: true
