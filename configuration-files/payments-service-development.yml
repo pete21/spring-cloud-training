@@ -3,6 +3,7 @@ server:
 spring:
   cloud:
     stream:
+      source: paymentsChannel
       #      function:
       #        bindings:
       #          paymentsChannel-in-0: paymentsChannel
