@@ -3,10 +3,12 @@ server:
 spring:
   cloud:
     stream:
+      source: paymentsChannel
       function:
         bindings:
           paymentsChannel-in-0: paymentsChannel
       bindings:
         paymentsChannel:
           destination: Payments
+          content-type: application/json
           group: payments
