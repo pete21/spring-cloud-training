@@ -1,10 +1,9 @@
 spring:
   cloud:
+    function:
+      definition: paymentsChannel
     stream:
-      function:
-        bindings:
-          paymentsChannel-in-0: paymentsChannel
       bindings:
-        paymentsChannel:
+        paymentsChannel-in-0:
           destination: Payments
           group: shop
