@@ -11,6 +11,7 @@ spring:
         paymentsChannel-out-0:
           destination: Payments
           content-type: application/json
+      default-binder: kafka
 payments-broker:
   paymentsBrokerServiceName: payments-broker
   paymentsResource: /payments
