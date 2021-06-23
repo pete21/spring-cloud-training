@@ -1,3 +1,3 @@
 server:
   port: 9001
-order-fee: 10
+order-fee: "{cipher}a019c7521666c8e992578ca19ad3123aaed6cd82bc36f8cb6c6e4babda53345e"

@@ -10,3 +10,5 @@ spring:
     bus:
       trace:
         enabled: true
+encrypt:
+  key: SYMMETRICKEY

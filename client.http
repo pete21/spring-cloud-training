@@ -81,4 +81,16 @@ Content-Type: application/x-www-form-urlencoded
 
 path=shop-service
 
+###
 
+POST localhost:8888/encrypt
+Content-Type: text/plain
+
+20
+
+###
+
+POST localhost:8888/decrypt
+Content-Type: text/plain
+
+a019c7521666c8e992578ca19ad3123aaed6cd82bc36f8cb6c6e4babda53345e
