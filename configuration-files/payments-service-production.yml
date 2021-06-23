@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        paymentsChannel-out-0:
+          destination: Payments
+          content-type: application/json
+  datasource:
+    url: jdbc:postgresql://payments-database/payments
+    username: admin
+    password: admin
+    driven-class-name: org.postgeresql.Driver
+payments-broker:
+  paymentsBrokerServiceName: payments-broker
+  paymentsResource: /payments

@@ -45,6 +45,12 @@ services:
       - CONFIGURATION_SERVER=optional:configserver:http://configuration-server:8888
     ports:
       - 8080:8080
+  payments-broker:
+    image: training/payments-broker
+    restart: always
+    environment:
+      - ACTIVE_PROFILE=production
+      - CONFIGURATION_SERVER=optional:configserver:http://configuration-server:8888
   payments-database:
     image: postgres:13-alpine
     restart: always
@@ -55,3 +61,9 @@ services:
       - PGDATA=/data
     volumes:
       - ./data/paymnets:/data
+  payments-service:
+    image: training/payments-service
+    restart: always
+    environment:
+      - ACTIVE_PROFILE=production
+      - CONFIGURATION_SERVER=optional:configserver:http://configuration-server:8888

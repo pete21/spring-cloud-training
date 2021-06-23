@@ -6,6 +6,11 @@ spring:
     admin:
       client:
         url: http://admin-server:8080
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: kafka-server
 opentracing:
   jaeger:
     udp-sender:
