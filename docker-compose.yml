@@ -37,3 +37,21 @@ services:
       - CONFIGURATION_SERVER=optional:configserver:http://configuration-server:8888
     ports:
       - 8761:8761
+  gateway-server:
+    image: training/gateway-server
+    restart: always
+    environment:
+      - ACTIVE_PROFILE=production
+      - CONFIGURATION_SERVER=optional:configserver:http://configuration-server:8888
+    ports:
+      - 8080:8080
+  payments-database:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      - POSTGERS_DB=payments
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - PGDATA=/data
+    volumes:
+      - ./data/paymnets:/data

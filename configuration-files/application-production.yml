@@ -6,11 +6,11 @@ spring:
     admin:
       client:
         url: http://admin-server:8080
-  zipkin:
-    baseUrl: http://localhost:9411
-  sleuth:
-    sampler:
-      probability: 1
+opentracing:
+  jaeger:
+    udp-sender:
+      host: jaeger-server
+      port: 6831
 eureka:
   client:
     serviceUrl:
