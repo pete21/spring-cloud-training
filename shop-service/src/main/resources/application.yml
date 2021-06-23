@@ -5,6 +5,6 @@ spring:
     import: optional:configserver:http://localhost:8888
   cloud:
     config:
-      label: 003-C`ommunication
+      label: 003-Communication
   profiles:
     active: development
