@@ -29,3 +29,11 @@ services:
       - KAFKA_BROKER=kafka-server
     ports:
       - 8888:8888
+  discovery-server:
+    image: training/discovery-server
+    restart: always
+    environment:
+      - ACTIVE_PROFILE=production
+      - CONFIGURATION_SERVER=optional:configserver:http://configuration-server:8888
+    ports:
+      - 8761:8761

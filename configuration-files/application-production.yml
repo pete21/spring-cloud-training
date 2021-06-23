@@ -1,0 +1,22 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  boot:
+    admin:
+      client:
+        url: http://localhost:8090
+  zipkin:
+    baseUrl: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-server:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
