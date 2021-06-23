@@ -1,9 +1,9 @@
 server:
   port: 10000
 spring:
-  cloud:
-    stream:
-      source: paymentsChannel
+#  cloud:
+#    stream:
+#      source: paymentsChannel
       #      function:
       #        bindings:
       #          paymentsChannel-in-0: paymentsChannel
@@ -11,7 +11,7 @@ spring:
         paymentsChannel-out-0:
           destination: Payments
           content-type: application/json
-      default-binder: kafka
+      #default-binder: kafka
 payments-broker:
   paymentsBrokerServiceName: payments-broker
   paymentsResource: /payments
