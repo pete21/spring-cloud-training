@@ -2,6 +2,8 @@ server:
   port: 10001
 spring:
   cloud:
+    function:
+      definition: paymentsChannel
     stream:
       bindings:
         paymentsChannel-in-0:

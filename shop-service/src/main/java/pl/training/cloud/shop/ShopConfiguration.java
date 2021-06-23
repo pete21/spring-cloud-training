@@ -16,6 +16,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 @Log
 @EnableFeignClients("pl.training.cloud.payments.adapters.rest")
