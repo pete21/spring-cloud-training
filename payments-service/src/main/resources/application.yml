@@ -5,7 +5,7 @@ spring:
     import: optional:configserver:http://localhost:8888
   cloud:
     config:
-      label: 002-Base-elements # default
+      label: 002-Base-elements
       # uri: http://localhost:8888 old way
 #  profiles:
 #    active: development
