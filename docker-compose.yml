@@ -1,17 +1,31 @@
 version: '3'
 services:
-  zookeeper:
+  zookeeper-server:
     image: wurstmeister/zookeeper
-    ports:
-      - 2181:2181
-  kafka:
+    restart: always
+  kafka-server:
     image: wurstmeister/kafka
-    ports:
-     - 9092:9092
+    restart: always
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: localhost
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-  zipkin:
-    image: openzipkin/zipkin
+      KAFKA_ADVERTISED_HOST_NAME: kafka-server
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper-server:2181
+  jaeger-server:
+    image: jaegertracing/all-in-one
+    restart: always
     ports:
-     - 9411:9411
+      - 16686:16686
+  admin-server:
+    image: training/admin-server
+    restart: always
+    environment:
+      - PORT=8080
+    ports:
+      - 8090:8080
+  configuration-server:
+    image: training/configuration-server
+    restart: always
+    environment:
+      - GIT_URI=https://github.com/landrzejewski/spring-cloud-training
+      - KAFKA_BROKER=kafka-server
+    ports:
+      - 8888:8888
