@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.client.RestTemplate;
 import pl.training.cloud.commons.money.FastMoneyMapper;
+import pl.training.cloud.payments.adapters.rest.PaymentDto;
 import pl.training.cloud.payments.application.GetPaymentService;
 import pl.training.cloud.payments.application.PaymentIdGenerator;
 import pl.training.cloud.payments.application.ProcessPaymentService;
@@ -20,6 +21,8 @@ import pl.training.cloud.payments.ports.usecases.ProcessPaymentUseCase;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+
+import java.util.function.Supplier;
 
 @EnableAspectJAutoProxy
 @Configuration
@@ -58,5 +61,10 @@ public class PaymentsConfiguration {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+
+    /*@Bean
+    public Supplier<PaymentDto> paymentsChannel() {
+        return PaymentDto::new;
+    }*/
 
 }

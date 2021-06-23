@@ -7,6 +7,7 @@ import lombok.extern.java.Log;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -24,6 +25,7 @@ public class PaymentsProcess {
 
     private final DiscoveryClient discoveryClient;
     private final StreamMapper mapper;
+    private final StreamBridge streamBridge;
     @Setter
     private String paymentsBrokerServiceName;
     @Setter
@@ -47,7 +49,12 @@ public class PaymentsProcess {
                 .bodyValue(mapper.toDto(payment))
                 .retrieve()
                 .bodyToMono(PaymentDto.class)
-                .subscribe(result -> log.info("On finish payment: " + result.toString()), exception -> log.info(exception.toString()), () -> log.info("Completed"));
+                .subscribe(this::onPayment, exception -> log.info(exception.toString()), () -> log.info("Completed"));
+    }
+
+    private void onPayment(PaymentDto paymentDto) {
+        log.info("On finish payment: " + paymentDto.toString());
+        streamBridge.send("paymentsChannel-in-0", paymentDto);
     }
 
     private URI getUri() {

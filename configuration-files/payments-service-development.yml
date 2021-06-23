@@ -1,5 +1,15 @@
 server:
   port: 10000
+spring:
+  cloud:
+    stream:
+      #      function:
+      #        bindings:
+      #          paymentsChannel-in-0: paymentsChannel
+      bindings:
+        paymentsChannel-in-0:
+          destination: Payments
+          content-type: application/json
 payments-broker:
   paymentsBrokerServiceName: payments-broker
   paymentsResource: /payments
