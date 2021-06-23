@@ -3,9 +3,12 @@ spring:
     name: shop-service
   config:
     import: optional:configserver:http://localhost:8888
+
   cloud:
     config:
       label: 006-Security
+    function:
+      definition: paymentsChannel
   profiles:
     active: development
 encrypt:

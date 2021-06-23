@@ -2,8 +2,12 @@ server:
   port: 10001
 spring:
   cloud:
-    bindings:
-      paymentsChannel-in-0:
-        destination: Payments
-        content-type: application/json
-        group: payments
+    stream:
+      function:
+        bindings:
+          paymentsChannel-in-0: paymentsChannel
+      bindings:
+        paymentsChannel:
+          destination: Payments
+          content-type: application/json
+          group: payments
