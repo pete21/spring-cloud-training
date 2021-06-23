@@ -17,7 +17,7 @@ public class LocalMoney {
     }
 
     private static CurrencyUnit getCurrencyUnit() {
-        return Monetary.getCurrency(Locale.getDefault());
+        return Monetary.getCurrency(new Locale("pl", "PL"));
     }
 
 }
