@@ -8,7 +8,7 @@ spring:
       #        bindings:
       #          paymentsChannel-in-0: paymentsChannel
       bindings:
-        paymentsChannel-in-0:
+        paymentsChannel-out-0:
           destination: Payments
           content-type: application/json
 payments-broker:
