@@ -10,7 +10,6 @@ spring:
       bindings:
         paymentsChannel-out-0:
           destination: Payments
-          content-type: application/json
 payments-broker:
   paymentsBrokerServiceName: payments-broker
   paymentsResource: /payments

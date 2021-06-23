@@ -7,5 +7,4 @@ spring:
       bindings:
         paymentsChannel:
           destination: Payments
-          content-type: application/json
           group: shop
