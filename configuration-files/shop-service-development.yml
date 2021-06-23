@@ -10,4 +10,4 @@ spring:
         paymentsChannel:
           destination: Payments
           content-type: application/json
-          group: payments
+          groups: payments
