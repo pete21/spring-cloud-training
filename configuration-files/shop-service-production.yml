@@ -8,4 +8,4 @@ spring:
         paymentsChannel:
           destination: Payments
           content-type: application/json
-          group: shop
+          groups: shop
