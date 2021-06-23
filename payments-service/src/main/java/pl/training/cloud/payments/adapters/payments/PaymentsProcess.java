@@ -54,7 +54,7 @@ public class PaymentsProcess {
 
     private void onPayment(PaymentDto paymentDto) {
         log.info("On finish payment: " + paymentDto.toString());
-        streamBridge.send("paymentsChannel-in-0", paymentDto);
+        streamBridge.send("paymentsChannel-out-0", paymentDto);
     }
 
     private URI getUri() {
