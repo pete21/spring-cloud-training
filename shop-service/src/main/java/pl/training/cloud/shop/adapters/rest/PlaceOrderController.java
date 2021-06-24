@@ -2,6 +2,7 @@ package pl.training.cloud.shop.adapters.rest;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,11 @@ public class PlaceOrderController {
         var order = mapper.toDomain(orderDto);
         placeOrderUseCase.place(order);
         return ResponseEntity.accepted().build();
+    }
+
+    @GetMapping
+    public String getOrder() {
+        return "ok";
     }
 
 }
