@@ -8,3 +8,21 @@ spring:
       label: 007-resilience4j
   profiles:
     active: development
+resilience4j:
+  circuitbreaker:
+    instances:
+      pay:
+        registerHealthIndicator: true
+        ringBufferSizeInClosedState: 5
+        ringBufferSizeInHalfOpenState: 3
+        waitDurationInOpenState: 10s
+        failreRateThreshold: 10
+        recordExceptions:
+          - java.lang.Exception
+  retry:
+    instances:
+      pay:
+        maxRetryAttempts: 3
+        waitDuration: 10000
+        retry-exceptions:
+          - java.lang.Exception
