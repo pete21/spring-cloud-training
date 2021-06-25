@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-config-map
+data:
+  KAFKA_ADVERTISED_HOST_NAME: kafka-service
+  KAFKA_ZOOKEEPER_CONNECT: zookeeper-service:2181
+
+#  HOSTNAME_COMMAND: "docker info | grep ^Name: | cut -d' ' -f 2" # Normal instances
+#  KAFKA_ZOOKEEPER_CONNECT: zookeeper-service:2181
+#  KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+#  KAFKA_ADVERTISED_LISTENERS: INSIDE://:9092,OUTSIDE://_{HOSTNAME_COMMAND}:9094
+#  KAFKA_LISTENERS: INSIDE://:9092,OUTSIDE://:9094
+#  KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE

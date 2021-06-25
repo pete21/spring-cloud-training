@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-service
+spec:
+  selector:
+    app-name: admin
+  ports:
+    - port: 8080

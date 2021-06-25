@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configuration-config-map
+data:
+  GIT_URI: https://github.com/landrzejewski/spring-cloud-training
+  KAFKA_BROKER: kafka-service
