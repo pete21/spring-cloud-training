@@ -2,6 +2,7 @@ package pl.training.cloud.payments.adapters.payments;
 
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.SneakyThrows;
 import lombok.Value;
 import lombok.extern.java.Log;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -23,7 +24,7 @@ import java.net.URI;
 @RequiredArgsConstructor
 public class PaymentsProcess {
 
-    private final DiscoveryClient discoveryClient;
+    //private final DiscoveryClient discoveryClient;
     private final StreamMapper mapper;
     private final StreamBridge streamBridge;
     @Setter
@@ -57,11 +58,16 @@ public class PaymentsProcess {
         streamBridge.send("paymentsChannel-out-0", paymentDto);
     }
 
+    @SneakyThrows
     private URI getUri() {
+        return new URI("http://payments-service:10002" + paymentsResource);
+    }
+
+   /* private URI getUri() {
         var instances = discoveryClient.getInstances(paymentsBrokerServiceName);
         var instance = instances.stream().findFirst()
                     .orElseThrow(IllegalStateException::new);
         return instance.getUri().resolve(paymentsResource);
-    }
+    }*/
 
 }
