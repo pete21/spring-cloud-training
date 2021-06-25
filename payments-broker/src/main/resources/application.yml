@@ -7,4 +7,4 @@ spring:
     active: development
   cloud:
     config:
-      label: 005-Container
+      label: 005-Containers
