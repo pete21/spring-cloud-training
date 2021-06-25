@@ -5,7 +5,7 @@ spring:
         paymentsChannel-out-0:
           destination: Payments
   datasource:
-    url: jdbc:postgresql://payments-service/payments
+    url: jdbc:postgresql://payments-database-service/payments
     #url: jdbc:postgresql://payments-database/payments
     username: admin
     password: admin
