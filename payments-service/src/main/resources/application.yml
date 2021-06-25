@@ -8,3 +8,5 @@ spring:
       label: 005-Containers # default
   profiles:
     active: development
+  redis:
+    host: redis-service
