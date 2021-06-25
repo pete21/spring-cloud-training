@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-database-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: payments-database-deployment
+  template:
+    metadata:
+      labels:
+        app-name: payments-database-deployment
+    spec:
+      containers:
+        - name: payments-database-deployment
+          image: postgres:13-alpine
+          envFrom:
+            - configMapRef:
+                name: payments-database-config-map
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /data
+              name:  volume
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: payments-database-volume-claim
+

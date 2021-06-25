@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: payments-broker
+spec:
+  selector:
+    app-name: payments-broker
+  ports:
+    - port: 10002

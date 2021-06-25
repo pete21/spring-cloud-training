@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-broker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: payments-broker
+  template:
+    metadata:
+      labels:
+        app-name: payments-broker
+    spec:
+      containers:
+        - name: admin
+          image: landrzejewski/payments-broker-t
+          envFrom:
+            - configMapRef:
+                name: common-config-map
+          ports:
+            - containerPort: 10002
+
