@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app-name: payments-database-deployment
+      app-name: payments-database
   template:
     metadata:
       labels:
-        app-name: payments-database-deployment
+        app-name: payments-database
     spec:
       containers:
         - name: payments-database-deployment
